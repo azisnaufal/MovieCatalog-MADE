@@ -31,17 +31,17 @@ class DetailMovieViewModel(private val movieAppUseCase: MovieAppUseCase) : BaseV
     fun setFav() {
         if (_isFavorite.value == true) {
             viewModelScope.launch(Dispatchers.IO) {
-                val __movie = _movie.value
-                if (__movie != null)
-                    movieAppUseCase.deleteFavorite(__movie)
+                val movieDomain = _movie.value
+                if (movieDomain != null)
+                    movieAppUseCase.deleteFavorite(movieDomain)
 
                 _isFavorite.postValue(false)
             }
         } else {
             viewModelScope.launch(Dispatchers.IO) {
-                val __movie = _movie.value
-                if (__movie != null)
-                    movieAppUseCase.setFavorite(__movie)
+                val movieDomain = _movie.value
+                if (movieDomain != null)
+                    movieAppUseCase.setFavorite(movieDomain)
 
                 _isFavorite.postValue(true)
             }

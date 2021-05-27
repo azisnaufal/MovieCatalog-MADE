@@ -15,9 +15,9 @@ class MoviesViewModel(private val movieAppUseCase: MovieAppUseCase) : BaseViewMo
     override suspend fun loadData() {}
 
     fun getMovies(): Flow<PagingData<MoviePagingDomain>> {
-        val __movies = movieAppUseCase.getAll().cachedIn(viewModelScope)
-        _movies = __movies
-        return __movies
+        val flow = movieAppUseCase.getAll().cachedIn(viewModelScope)
+        _movies = flow
+        return flow
     }
 
 }

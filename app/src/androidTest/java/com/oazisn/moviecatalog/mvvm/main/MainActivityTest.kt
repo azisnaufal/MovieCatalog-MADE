@@ -82,7 +82,7 @@ class MainActivityTest {
         }
     }
 
-    fun waitFor(delay: Long): ViewAction {
+    private fun waitFor(delay: Long): ViewAction {
         return object : ViewAction {
             override fun getConstraints(): Matcher<View> {
                 return isRoot()

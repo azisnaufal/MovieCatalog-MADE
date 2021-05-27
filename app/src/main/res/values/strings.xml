@@ -18,8 +18,8 @@
     <string name="add_as_fav">Added to favorite.</string>
     <string name="rem_from_fav">Removed from favorite.</string>
     <string name="add_as_fav_movie">Add this movie to favorite.</string>
-    <string name="rem_from_fav_movie">Remove this movie from favorite.</string>
     <string name="add_as_fav_tvshow">Add this tv show to favorite.</string>
+    <string name="rem_from_fav_movie">Remove this movie from favorite.</string>
     <string name="rem_from_fav_tvshow">Remove this tv show from favorite.</string>
     <string name="title_favorite">Favorite</string>
 </resources>

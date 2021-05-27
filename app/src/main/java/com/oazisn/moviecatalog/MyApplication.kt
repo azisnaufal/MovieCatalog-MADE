@@ -12,7 +12,6 @@ import org.koin.core.context.startKoin
 
 
 class MyApplication : Application() {
-
     override fun onCreate() {
         super.onCreate()
         startKoin {
@@ -28,11 +27,4 @@ class MyApplication : Application() {
             )
         }
     }
-
-    companion object {
-        lateinit var instance: MyApplication
-
-        fun getContext(): Context = instance.applicationContext
-    }
-
 }

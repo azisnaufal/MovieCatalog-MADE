@@ -85,7 +85,7 @@ class DetailTvShowFragment : Fragment() {
                             )
                         )
 
-                        contentDescription = getString(R.string.rem_from_fav_movie)
+                        contentDescription = getString(R.string.rem_from_fav_tvshow)
                     }
 
                     if (!binding.swipeRefresh.isRefreshing)
@@ -100,7 +100,7 @@ class DetailTvShowFragment : Fragment() {
                             )
                         )
 
-                        contentDescription = getString(R.string.add_as_fav_movie)
+                        contentDescription = getString(R.string.add_as_fav_tvshow)
                     }
 
                     if (!binding.swipeRefresh.isRefreshing)

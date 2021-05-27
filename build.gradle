@@ -21,20 +21,20 @@ buildscript {
         loggingInterceptorVersion = "4.9.0"
         retrofit2kotlinadapterVersion = "0.9.2"
         coroutinesVersion = "1.4.3"
-        koinVersion = "2.2.2"
+        koinVersion = "2.2.3"
         multidexVersion = "2.0.1"
         roomVersion = "2.3.0"
         pagingVersion = '3.0.0'
     }
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationKtxVersion"
-        classpath "org.koin:koin-gradle-plugin:$koinVersion"
+        classpath "io.insert-koin:koin-gradle-plugin:$koinVersion"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -44,7 +44,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 

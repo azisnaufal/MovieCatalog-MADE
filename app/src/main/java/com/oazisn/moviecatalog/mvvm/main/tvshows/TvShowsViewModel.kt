@@ -15,9 +15,9 @@ class TvShowsViewModel(private val tvShowAppUseCase: TvShowAppUseCase) : BaseVie
     override suspend fun loadData() {}
 
     fun getTvShows(): Flow<PagingData<TvShowPagingDomain>> {
-        val __tvShows = tvShowAppUseCase.getAll().cachedIn(viewModelScope)
-        _tvShows = __tvShows
-        return __tvShows
+        val flow = tvShowAppUseCase.getAll().cachedIn(viewModelScope)
+        _tvShows = flow
+        return flow
     }
 
 }

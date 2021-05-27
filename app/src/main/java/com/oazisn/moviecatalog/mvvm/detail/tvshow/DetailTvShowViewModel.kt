@@ -31,17 +31,17 @@ class DetailTvShowViewModel(private val tvShowAppUseCase: TvShowAppUseCase) : Ba
     fun setFav() {
         if (_isFavorite.value == true) {
             viewModelScope.launch(Dispatchers.IO) {
-                val __tvShow = _tvShow.value
-                if (__tvShow != null)
-                    tvShowAppUseCase.deleteFavorite(__tvShow)
+                val tvShowDomain = _tvShow.value
+                if (tvShowDomain != null)
+                    tvShowAppUseCase.deleteFavorite(tvShowDomain)
 
                 _isFavorite.postValue(false)
             }
         } else {
             viewModelScope.launch(Dispatchers.IO) {
-                val __tvShow = _tvShow.value
-                if (__tvShow != null)
-                    tvShowAppUseCase.setFavorite(__tvShow)
+                val tvShowDomain = _tvShow.value
+                if (tvShowDomain != null)
+                    tvShowAppUseCase.setFavorite(tvShowDomain)
 
                 _isFavorite.postValue(true)
             }

@@ -14,9 +14,9 @@ dependencies {
     implementation "androidx.multidex:multidex:$multidexVersion"
     implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
     implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion"
-    implementation "org.koin:koin-core:$koinVersion"
-    implementation "org.koin:koin-core-ext:$koinVersion"
-    implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+    implementation "io.insert-koin:koin-core:$koinVersion"
+    implementation "io.insert-koin:koin-core-ext:$koinVersion"
+    implementation "io.insert-koin:koin-androidx-viewmodel:$koinVersion"
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation "androidx.test.ext:junit:$androidXJunitVersion"
@@ -27,6 +27,6 @@ dependencies {
     testImplementation "org.mockito:mockito-inline:$mockitoVersion"
     testImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
-    testImplementation "org.koin:koin-test:$koinVersion"
+    testImplementation "io.insert-koin:koin-test:$koinVersion"
 
 }

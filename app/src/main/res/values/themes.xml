@@ -21,8 +21,6 @@
 
     <style name="Theme.MovieCatalog.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.MovieCatalog.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
     <style name="Theme.MovieCatalog.Splash" parent="Theme.MovieCatalog.NoActionBar">
         <item name="android:windowBackground">@drawable/splash</item>
     </style>
