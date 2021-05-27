@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_app"
+    app:startDestination="@id/mainFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.oazisn.moviecatalog.mvvm.main.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_detailTvShowFragment"
+            app:destination="@id/detailTvShowFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_mainFragment_to_detailMovieFragment"
+            app:destination="@id/detailMovieFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_mainFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailTvShowFragment"
+        android:name="com.oazisn.moviecatalog.mvvm.detail.tvshow.DetailTvShowFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="tv_id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailMovieFragment"
+        android:name="com.oazisn.moviecatalog.mvvm.detail.movie.DetailMovieFragment"
+        android:label="DetailFragment">
+        <argument
+            android:name="movie_id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.oazisn.moviecatalog.favorite.FavoriteFragment"
+        android:label="FavoriteFragment">
+        <action
+            android:id="@+id/action_favoriteFragment_to_detailMovieFragment"
+            app:destination="@id/detailMovieFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_detailTvShowFragment"
+            app:destination="@id/detailTvShowFragment" />
+    </fragment>
+</navigation>

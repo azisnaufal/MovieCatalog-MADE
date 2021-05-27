@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Movie Catalog</string>
+    <string name="app_favorite_name">Favorite Movie Catalog</string>
+    <string name="tab_text_1">Movies</string>
+    <string name="tab_text_2">TV Shows</string>
+    <string name="poster">Poster</string>
+    <string name="poster_of">Poster of %1$s</string>
+    <string name="director">Director: %1$s</string>
+    <string name="writers">Writers: %1$s</string>
+    <string name="stars">Stars: %1$s</string>
+    <string name="creator">Creator: %1$s</string>
+    <string name="subtitle">%1$s | %2$s | %3$s | %4$s</string>
+    <string name="detail_movie">Detail Movie</string>
+    <string name="detail_tv_show">Detail TV Show</string>
+    <string name="error_no_internet">Sorry, you\'re not connected to the internet.</string>
+    <string name="error_no_data">Sorry, no data available.</string>
+    <string name="favorite">Favorite</string>
+    <string name="add_as_fav">Added to favorite.</string>
+    <string name="rem_from_fav">Removed from favorite.</string>
+    <string name="add_as_fav_movie">Add this movie to favorite.</string>
+    <string name="rem_from_fav_movie">Remove this movie from favorite.</string>
+    <string name="add_as_fav_tvshow">Add this tv show to favorite.</string>
+    <string name="rem_from_fav_tvshow">Remove this tv show from favorite.</string>
+    <string name="title_favorite">Favorite</string>
+</resources>
