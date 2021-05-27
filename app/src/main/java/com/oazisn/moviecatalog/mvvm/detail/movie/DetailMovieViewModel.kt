@@ -24,8 +24,11 @@ class DetailMovieViewModel(private val movieAppUseCase: MovieAppUseCase) : BaseV
     var contentId: Int = 0
 
     override suspend fun loadData() {
-        _movie.postValue(movieAppUseCase.get(contentId))
-        _isFavorite.postValue(movieAppUseCase.isFavoriteExist(contentId))
+        val result = movieAppUseCase.get(contentId)
+        _movie.postValue(result)
+
+        val resultFav = movieAppUseCase.isFavoriteExist(contentId)
+        _isFavorite.postValue(resultFav)
     }
 
     fun setFav() {

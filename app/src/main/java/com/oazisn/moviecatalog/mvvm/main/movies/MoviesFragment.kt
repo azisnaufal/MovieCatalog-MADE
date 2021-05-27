@@ -54,7 +54,7 @@ class MoviesFragment : Fragment() {
             recyclerView.adapter = adapter
 
             swipeRefresh.setOnRefreshListener {
-                adapter.refresh()
+                loadData()
             }
             swipeRefresh.setColorSchemeResources(R.color.green_500)
 

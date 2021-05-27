@@ -24,8 +24,11 @@ class DetailTvShowViewModel(private val tvShowAppUseCase: TvShowAppUseCase) : Ba
     var contentId: Int = 0
 
     override suspend fun loadData() {
-        _tvShow.postValue(tvShowAppUseCase.get(contentId))
-        _isFavorite.postValue(tvShowAppUseCase.isFavoriteExist(contentId))
+        val result = tvShowAppUseCase.get(contentId)
+        _tvShow.postValue(result)
+
+        val resultFav = tvShowAppUseCase.isFavoriteExist(contentId)
+        _isFavorite.postValue(resultFav)
     }
 
     fun setFav() {
