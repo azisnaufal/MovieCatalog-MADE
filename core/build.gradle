@@ -45,6 +45,9 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
 
+    implementation "net.zetetic:android-database-sqlcipher:$sqlcipherVersion"
+    implementation "androidx.sqlite:sqlite-ktx:$sqliteKtxVersion"
+
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
     implementation "androidx.room:room-runtime:$roomVersion"

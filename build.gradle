@@ -25,6 +25,8 @@ buildscript {
         multidexVersion = "2.0.1"
         roomVersion = "2.3.0"
         pagingVersion = '3.0.0'
+        sqlcipherVersion = "4.4.0"
+        sqliteKtxVersion = "2.1.0"
     }
     repositories {
         google()
