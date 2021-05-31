@@ -21,11 +21,13 @@ fun View.showSnackbar(@StringRes res: Int, @IdRes anchor: Int) {
 }
 
 fun View.showSnackbar(@StringRes res: Int) {
-    val handler = android.os.Handler(Looper.getMainLooper())
-    handler.postDelayed({
+    try {
         Snackbar.make(this, resources.getString(res), Snackbar.LENGTH_SHORT)
             .show()
-    }, 400)
+    }
+    catch (e: IllegalArgumentException){
+        e.printStackTrace()
+    }
 }
 
 fun Context.isConnected(): Boolean {

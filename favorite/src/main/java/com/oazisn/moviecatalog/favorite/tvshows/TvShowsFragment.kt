@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.oazisn.moviecatalog.R
 import com.oazisn.moviecatalog.core.utils.EspressoIdlingResource
 import com.oazisn.moviecatalog.core.utils.showSnackbar
@@ -17,19 +18,11 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 /**
  * A placeholder fragment containing a simple view.
  */
-class TvShowsFragment : Fragment() {
+class TvShowsFragment : Fragment(R.layout.fragment_list) {
 
     private val tvShowsViewModel: TvShowsViewModel by viewModel()
-    private lateinit var binding: FragmentListBinding
+    private val binding: FragmentListBinding by viewBinding()
     private lateinit var adapter: TvAdapter
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentListBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,8 +49,9 @@ class TvShowsFragment : Fragment() {
                     binding.root.showSnackbar(R.string.error_no_data)
                 }
                 adapter.setData(it)
-                EspressoIdlingResource.decrement()
-
+                if (!EspressoIdlingResource.idlingResource.isIdleNow) {
+                    EspressoIdlingResource.decrement()
+                }
             })
         }
     }

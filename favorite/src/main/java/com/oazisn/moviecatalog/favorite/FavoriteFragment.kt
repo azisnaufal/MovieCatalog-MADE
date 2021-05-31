@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import com.oazisn.moviecatalog.R
 import com.oazisn.moviecatalog.core.utils.getDrawableFromAttribute
@@ -19,18 +20,8 @@ import com.oazisn.moviecatalog.favorite.ui.TVSHOWS_INDEX
 import org.koin.core.context.loadKoinModules
 
 
-class FavoriteFragment : Fragment() {
-    private lateinit var binding: FragmentMainBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentMainBinding.inflate(inflater, container, false)
-
-        return binding.root
-    }
+class FavoriteFragment : Fragment(R.layout.fragment_main) {
+    private val binding: FragmentMainBinding by viewBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -60,6 +51,11 @@ class FavoriteFragment : Fragment() {
             TVSHOWS_INDEX -> getString(R.string.tab_text_2)
             else -> null
         }
+    }
+
+    override fun onDestroyView() {
+        binding.viewPager.adapter = null
+        super.onDestroyView()
     }
 
 }

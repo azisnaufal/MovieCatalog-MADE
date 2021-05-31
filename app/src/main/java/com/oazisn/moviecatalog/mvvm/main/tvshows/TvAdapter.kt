@@ -31,7 +31,7 @@ class TvAdapter(val onClick: (view: View, index: Int) -> Unit) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding =
+        val binding = 
             ItemMovieTvshowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }

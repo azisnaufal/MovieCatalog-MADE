@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.oazisn.moviecatalog.R
 import com.oazisn.moviecatalog.core.base.BaseViewModel
 import com.oazisn.moviecatalog.core.utils.EspressoIdlingResource
@@ -26,24 +27,15 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 /**
  * A placeholder fragment containing a simple view.
  */
-class MoviesFragment : Fragment() {
+class MoviesFragment : Fragment(R.layout.fragment_list) {
 
     private val moviesViewModel: MoviesViewModel by viewModel()
-    private lateinit var binding: FragmentListBinding
+    private val binding: FragmentListBinding by viewBinding()
     private val adapter: MoviesAdapter = MoviesAdapter { _view, id ->
         val direction = MainFragmentDirections.actionMainFragmentToDetailMovieFragment(id)
         _view.findNavController().navigate(direction)
     }
     private var loadJob: Job? = null
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentListBinding.inflate(inflater, container, false)
-
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

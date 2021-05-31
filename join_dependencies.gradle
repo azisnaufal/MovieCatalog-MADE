@@ -17,6 +17,7 @@ dependencies {
     implementation "io.insert-koin:koin-core:$koinVersion"
     implementation "io.insert-koin:koin-core-ext:$koinVersion"
     implementation "io.insert-koin:koin-androidx-viewmodel:$koinVersion"
+    implementation "com.github.kirich1409:viewbindingpropertydelegate:$viewBindingPropDelegateVersion"
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation "androidx.test.ext:junit:$androidXJunitVersion"

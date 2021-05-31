@@ -27,6 +27,8 @@ buildscript {
         pagingVersion = '3.0.0'
         sqlcipherVersion = "4.4.0"
         sqliteKtxVersion = "2.1.0"
+        leakCanaryVersion = "2.6"
+        viewBindingPropDelegateVersion = "1.4.6"
     }
     repositories {
         google()

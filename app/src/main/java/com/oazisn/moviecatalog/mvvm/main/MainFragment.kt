@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.CreateMethod
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import com.oazisn.moviecatalog.R
 import com.oazisn.moviecatalog.databinding.FragmentMainBinding
@@ -13,18 +15,8 @@ import com.oazisn.moviecatalog.mvvm.main.ui.MOVIES_INDEX
 import com.oazisn.moviecatalog.mvvm.main.ui.SectionsPagerAdapter
 import com.oazisn.moviecatalog.mvvm.main.ui.TVSHOWS_INDEX
 
-class MainFragment : Fragment() {
-    private lateinit var binding: FragmentMainBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentMainBinding.inflate(inflater, container, false)
-
-        return binding.root
-    }
+class MainFragment : Fragment(R.layout.fragment_main) {
+    private val binding: FragmentMainBinding by viewBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,6 +48,11 @@ class MainFragment : Fragment() {
             TVSHOWS_INDEX -> getString(R.string.tab_text_2)
             else -> null
         }
+    }
+
+    override fun onDestroyView() {
+        binding.viewPager.adapter = null
+        super.onDestroyView()
     }
 
 }
