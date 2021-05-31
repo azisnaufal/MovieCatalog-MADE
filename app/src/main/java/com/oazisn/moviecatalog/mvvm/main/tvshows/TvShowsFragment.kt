@@ -87,6 +87,21 @@ class TvShowsFragment : Fragment(R.layout.fragment_list) {
         }
     }
 
+    override fun onPause() {
+        binding.swipeRefresh.isEnabled = false
+        super.onPause()
+    }
+
+    override fun onResume() {
+        binding.swipeRefresh.isEnabled = true
+        super.onResume()
+    }
+
+    override fun onDestroyView() {
+        binding.recyclerView.adapter = null
+        super.onDestroyView()
+    }
+
     companion object {
         /**
          * Returns a new instance of this fragment.

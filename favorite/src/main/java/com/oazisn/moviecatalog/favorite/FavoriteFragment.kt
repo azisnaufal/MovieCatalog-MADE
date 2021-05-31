@@ -18,6 +18,7 @@ import com.oazisn.moviecatalog.favorite.ui.MOVIES_INDEX
 import com.oazisn.moviecatalog.favorite.ui.SectionsPagerAdapter
 import com.oazisn.moviecatalog.favorite.ui.TVSHOWS_INDEX
 import org.koin.core.context.loadKoinModules
+import org.koin.core.context.unloadKoinModules
 
 
 class FavoriteFragment : Fragment(R.layout.fragment_main) {
@@ -27,9 +28,20 @@ class FavoriteFragment : Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
         loadKoinModules(favoriteModule)
 
-        val sectionPagerAdapter = SectionsPagerAdapter(this)
+        val sectionPagerAdapter = SectionsPagerAdapter(childFragmentManager,
+            viewLifecycleOwner.lifecycle)
         binding.apply {
             viewPager.adapter = sectionPagerAdapter
+            viewPager.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
+                override fun onViewAttachedToWindow(v: View?) {
+                }
+
+                override fun onViewDetachedFromWindow(v: View?) {
+                    viewPager.adapter = null
+                }
+
+            })
+
             toolbar.title = getString(R.string.app_favorite_name)
             toolbar.setNavigationIconTint(ContextCompat.getColor(requireContext(), R.color.white))
             toolbar.navigationIcon =
@@ -54,7 +66,7 @@ class FavoriteFragment : Fragment(R.layout.fragment_main) {
     }
 
     override fun onDestroyView() {
-        binding.viewPager.adapter = null
+        unloadKoinModules(favoriteModule)
         super.onDestroyView()
     }
 

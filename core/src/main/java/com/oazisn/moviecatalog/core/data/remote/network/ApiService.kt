@@ -1,6 +1,7 @@
 package com.oazisn.moviecatalog.core.data.remote.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.oazisn.moviecatalog.core.BuildConfig
 import okhttp3.CertificatePinner
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -10,13 +11,11 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object ApiService {
     val getApiService: Retrofit by lazy {
-        val mLoggingInterceptor = HttpLoggingInterceptor()
-        mLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
         val apiKeyInterceptor = Interceptor { chain ->
             var original = chain.request()
             val url = original.url.newBuilder()
-                .addQueryParameter("api_key", "38c6ea3db680fae502416d80ff416a0b").build()
+                .addQueryParameter("api_key", BuildConfig.API_KEY).build()
             original = original.newBuilder().url(url).build()
             chain.proceed(original)
         }
@@ -30,7 +29,6 @@ object ApiService {
 
         val mClient = OkHttpClient.Builder()
             .addInterceptor(apiKeyInterceptor)
-            .addInterceptor(mLoggingInterceptor)
             .certificatePinner(certificatePinner)
             .build()
 

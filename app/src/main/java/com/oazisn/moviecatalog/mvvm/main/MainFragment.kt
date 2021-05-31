@@ -1,12 +1,9 @@
 package com.oazisn.moviecatalog.mvvm.main
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import com.oazisn.moviecatalog.R
@@ -20,9 +17,19 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val sectionPagerAdapter = SectionsPagerAdapter(this)
+        val sectionPagerAdapter = SectionsPagerAdapter(childFragmentManager,
+            viewLifecycleOwner.lifecycle)
         binding.apply {
             viewPager.adapter = sectionPagerAdapter
+            viewPager.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
+                override fun onViewAttachedToWindow(v: View?) {
+                }
+
+                override fun onViewDetachedFromWindow(v: View?) {
+                    viewPager.adapter = null
+                }
+
+            })
             toolbar.inflateMenu(R.menu.main)
             toolbar.setOnMenuItemClickListener {
                 return@setOnMenuItemClickListener when (it.itemId) {
@@ -51,7 +58,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     override fun onDestroyView() {
-        binding.viewPager.adapter = null
+        TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
+            tab.text = getTabTitle(position)
+        }.detach()
         super.onDestroyView()
     }
 

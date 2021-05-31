@@ -1,6 +1,8 @@
 package com.oazisn.moviecatalog.mvvm.main.ui
 
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.oazisn.moviecatalog.mvvm.main.movies.MoviesFragment
 import com.oazisn.moviecatalog.mvvm.main.tvshows.TvShowsFragment
@@ -8,7 +10,8 @@ import com.oazisn.moviecatalog.mvvm.main.tvshows.TvShowsFragment
 const val MOVIES_INDEX = 0
 const val TVSHOWS_INDEX = 1
 
-class SectionsPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+class SectionsPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+    FragmentStateAdapter(fragmentManager, lifecycle) {
 
     /**
      * Mapping of the ViewPager page indexes to their respective Fragments
@@ -18,7 +21,7 @@ class SectionsPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) 
         TVSHOWS_INDEX to { TvShowsFragment.newInstance() },
     )
 
-    override fun getItemCount(): Int = 2
+    override fun getItemCount(): Int = tabFragmentsCreators.size
 
     override fun createFragment(position: Int): Fragment =
         tabFragmentsCreators[position]?.invoke() ?: throw IndexOutOfBoundsException()

@@ -162,4 +162,14 @@ class DetailMovieFragment : Fragment(R.layout.detail_fragment) {
         detailViewModel.getData()
     }
 
+    override fun onPause() {
+        binding.swipeRefresh.isEnabled = false
+        super.onPause()
+    }
+
+    override fun onResume() {
+        binding.swipeRefresh.isEnabled = true
+        super.onResume()
+    }
+
 }
